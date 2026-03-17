@@ -22,6 +22,7 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModItems.MAKESHIFT_NETHER_STAR.get());
                         pOutput.accept(ModBlocks.FLESH_BLOCK.get());
                         pOutput.accept(ModBlocks.CHEESE_BLOCK.get());
+                        pOutput.accept(ModItems.CHEESE_SLICE.get());
                     })
                     .build());
 
