@@ -1,6 +1,7 @@
 package net.crs.limits;
 
 import com.mojang.logging.LogUtils;
+import net.crs.limits.item.ModCreativeModeTabs;
 import net.crs.limits.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
@@ -30,6 +31,7 @@ public class LimitsMod
     {
         IEventBus modEventBus = context.getModEventBus();
         ModItems.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

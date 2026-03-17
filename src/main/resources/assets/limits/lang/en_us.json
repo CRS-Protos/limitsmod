@@ -1,3 +1,5 @@
 {
-  "item.limits.mkns": "Makeshift Nether Star"
+  "item.limits.mkns": "Makeshift Nether Star",
+
+  "creativetab.limits_tab": "Nether Items"
 }
