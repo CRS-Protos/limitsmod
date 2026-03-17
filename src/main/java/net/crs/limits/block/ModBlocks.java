@@ -1,12 +1,17 @@
 package net.crs.limits.block;
 
 import net.crs.limits.LimitsMod;
+import net.crs.limits.block.custom.ModFireBlock;
 import net.crs.limits.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -45,5 +50,16 @@ public class ModBlocks
 
     public static final RegistryObject<Block> CHEESE_BLOCK = registerBlock("cheese_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)));
+
+    // note to self:
+    // register fire to minecraft registry using "minecraft" instead of LimitsMod.MODID
+    // needs a new method and DeferredRegistry to register it correctly
+    // vanillaRegister() and VANILLABLOCKS similar to register() and BLOCKS
+    public static final RegistryObject<Block> FIRE = registerBlock("fire",
+            () -> new ModFireBlock
+                    (BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) ->
+                    {
+                        return 15;
+                    }).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)));
 
 }
