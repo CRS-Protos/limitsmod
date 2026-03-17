@@ -2,6 +2,8 @@ package net.crs.limits.item.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -48,6 +50,8 @@ public class CleansingVial extends Item
         if (!player.getAbilities().instabuild) {
             itemstack.shrink(1);
         }
-        //playsound
+        //playsound not working
+        //change to splash potion breaking when fixed
+        //pContext.getLevel().playSound(player, posclicked, SoundEvents.COW_DEATH, SoundSource.NEUTRAL, 1f, 1f);
     }
 }
