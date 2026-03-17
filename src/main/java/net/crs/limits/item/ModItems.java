@@ -1,6 +1,7 @@
 package net.crs.limits.item;
 
 import net.crs.limits.LimitsMod;
+import net.crs.limits.item.custom.CleansingVial;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,4 +27,7 @@ public class ModItems
 
     public static final RegistryObject<Item> CHEESE_SLICE = ITEMS.register("cheese_slice",
             () -> new Item(new Item.Properties().food(ModFoods.CHEESE_SLICE)));
+
+    public static final RegistryObject<Item> CLEANSING_VIAL = ITEMS.register("cleansing_vial",
+            () -> new CleansingVial(new Item.Properties()));
 }

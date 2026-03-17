@@ -44,6 +44,6 @@ public class ModBlocks
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.WET_SPONGE)));
 
     public static final RegistryObject<Block> CHEESE_BLOCK = registerBlock("cheese_block",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.HAY_BLOCK)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)));
 
 }
