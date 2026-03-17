@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "limits:block/cheese_block"
+    }
+  }
+}

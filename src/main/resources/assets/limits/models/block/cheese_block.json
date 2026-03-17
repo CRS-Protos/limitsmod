@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures":
+  {
+    "top": "limits:block/cheese_block_top",
+    "side": "limits:block/cheese_block_side",
+    "bottom": "limits:block/cheese_block_bottom"
+  }
+}
