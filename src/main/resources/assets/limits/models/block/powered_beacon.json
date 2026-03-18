@@ -3,7 +3,7 @@
         "particle": "block/glass",
         "glass": "block/glass",
         "obsidian": "block/obsidian",
-        "beacon": "block/beacon"
+        "beacon": "limits:block/powered_inner_beacon"
     },
     "render_type": "translucent",
     "elements": [
