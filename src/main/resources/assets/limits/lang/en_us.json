@@ -6,6 +6,7 @@
   "block.limits.flesh_block": "Block of Flesh",
   "block.limits.cheese_block": "Cheese Block",
   "block.limits.fire": "crazy fire",
+  "block.limits.powered_beacon": "Powered Beacon",
 
   "creativetab.limits_tab": "Nether Items"
 }

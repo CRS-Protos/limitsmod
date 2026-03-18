@@ -26,11 +26,17 @@ public class ModFireBlock extends FireBlock
         //check for beacon or makeshift beacon within radius
         //int radius = 16; //in blocks //not needed
         Map<BlockPos, BlockEntity> bEnts = pLevel.getChunkAt(pPos).getBlockEntities(); //checks for block entities
+
+        // DEBUG
+        /*
+
         pLevel.players().get(0).sendSystemMessage(Component.literal("ALL"));
         pLevel.players().get(0).sendSystemMessage(Component.literal(bEnts.toString()));
         pLevel.players().get(0).sendSystemMessage(Component.literal("VALUES"));
         pLevel.players().get(0).sendSystemMessage(Component.literal(bEnts.values().toString()));
         pLevel.players().get(0).sendSystemMessage(Component.literal("END"));
+
+         */
 
         //beacon check
         if (bEnts.values().toString().toLowerCase().contains("beacon"))

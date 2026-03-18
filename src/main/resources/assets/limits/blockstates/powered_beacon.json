@@ -1,8 +1,7 @@
 {
   "variants": {
-    "": {
-      "model": "limits:block/powered_beacon"
-    }
+    "powered=true": { "model": "limits:block/powered_beacon" },
+    "powered=false": { "model": "limits:block/unpowered_beacon"}
   }
 }
 

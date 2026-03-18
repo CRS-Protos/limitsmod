@@ -61,7 +61,16 @@ public class PoweredBeacon extends BeaconBlock implements BeaconBeamBlock
         } else {
             if (pPlayer.isHolding(ModItems.MAKESHIFT_NETHER_STAR.get()))
             {
-                pLevel.players().get(0).sendSystemMessage(Component.literal("Holding Makeshift Nether Star"));
+                //pLevel.players().get(0).sendSystemMessage(Component.literal("Holding Makeshift Nether Star"));
+                if (!pPlayer.getAbilities().instabuild)
+                {
+                    pPlayer.getMainHandItem().shrink(1);
+                }
+
+                //pState.setValue(POWERED, true);
+                pLevel.setBlock(pPos, pState.setValue(POWERED, true), Block.UPDATE_NEIGHBORS);
+                pLevel.players().get(0).sendSystemMessage(Component.literal(pState.getValue(POWERED).toString()));
+
             }
             BlockEntity blockentity = pLevel.getBlockEntity(pPos);
             //if (blockentity instanceof BeaconBlockEntity) {
