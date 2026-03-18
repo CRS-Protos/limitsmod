@@ -26,9 +26,17 @@ public class ModBlocks
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, LimitsMod.MODID);
 
+    public static final DeferredRegister<Block> VANILLA_BLOCKS =
+            DeferredRegister.create(ForgeRegistries.BLOCKS, "minecraft");
+
     public static void register(IEventBus eventBus)
     {
         BLOCKS.register(eventBus);
+    }
+
+    public static void vanillaRegister(IEventBus eventBus)
+    {
+        VANILLA_BLOCKS.register(eventBus);
     }
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block)
@@ -40,6 +48,17 @@ public class ModBlocks
     {
         RegistryObject<Block> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
+        return toReturn;
+    }
+
+    private static <T extends Block> RegistryObject<Block> registerVanillaBlock(String name, Supplier<T> block, boolean hasItem)
+    {
+        RegistryObject<Block> toReturn = VANILLA_BLOCKS.register(name, block);
+        if (hasItem)
+        {
+            //todo: needs vanillaRegisterBlockItem()
+            registerBlockItem(name, toReturn);
+        }
         return toReturn;
     }
 
@@ -60,15 +79,18 @@ public class ModBlocks
                     }).noOcclusion())
             );
 
-    // note to self:
+    // todo (completed)
     // register fire to minecraft registry using "minecraft" instead of LimitsMod.MODID
     // needs a new method and DeferredRegistry to register it correctly
     // vanillaRegister() and VANILLABLOCKS similar to register() and BLOCKS
-    public static final RegistryObject<Block> FIRE = registerBlock("fire",
+    public static final RegistryObject<Block> FIRE = registerVanillaBlock("fire",
             () -> new ModFireBlock
                     (BlockBehaviour.Properties.of().mapColor(MapColor.FIRE).replaceable().noCollission().instabreak().lightLevel((p_152607_) ->
                     {
                         return 15;
-                    }).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)));
+                    }).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY)),
+            false);
+
+
 
 }

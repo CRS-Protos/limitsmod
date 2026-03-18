@@ -23,10 +23,17 @@ public class ModFireBlock extends FireBlock
     public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pBlockstate, boolean pIsMoving)
     {
         //check for beacon or makeshift beacon within radius
-        //todo: figure out how to identify beacon
-        int radius = 16; //in blocks
-        Map<BlockPos, BlockEntity> bEnts = pLevel.getChunkAt(pPos).getBlockEntities();
+        //int radius = 16; //in blocks //not needed
+        Map<BlockPos, BlockEntity> bEnts = pLevel.getChunkAt(pPos).getBlockEntities(); //checks for block entities
+        pLevel.players().get(0).sendSystemMessage(Component.literal("ALL"));
         pLevel.players().get(0).sendSystemMessage(Component.literal(bEnts.toString()));
+        pLevel.players().get(0).sendSystemMessage(Component.literal("VALUES"));
+        pLevel.players().get(0).sendSystemMessage(Component.literal(bEnts.values().toString()));
+        pLevel.players().get(0).sendSystemMessage(Component.literal("END"));
+        if (bEnts.values().toString().toLowerCase().contains("beacon"))
+        {
+            pLevel.players().get(0).sendSystemMessage(Component.literal("BEACON FOUND"));
+        }
 
         super.onPlace(pState, pLevel, pPos, pBlockstate, pIsMoving);
     }

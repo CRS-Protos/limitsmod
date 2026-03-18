@@ -31,9 +31,10 @@ public class LimitsMod
     public LimitsMod(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
-        ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
-        ModCreativeModeTabs.register(modEventBus);
+        ModItems.register(modEventBus);                     // items
+        ModBlocks.register(modEventBus);                    // blocks
+        ModBlocks.vanillaRegister(modEventBus);             // vanilla blocks
+        ModCreativeModeTabs.register(modEventBus);          // creative tabs
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
