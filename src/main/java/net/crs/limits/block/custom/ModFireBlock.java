@@ -3,6 +3,7 @@ package net.crs.limits.block.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.FireBlock;
@@ -20,7 +21,7 @@ public class ModFireBlock extends FireBlock
     }
 
     @Override
-    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pBlockstate, boolean pIsMoving)
+    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pIsMoving)
     {
         //check for beacon or makeshift beacon within radius
         //int radius = 16; //in blocks //not needed
@@ -30,12 +31,26 @@ public class ModFireBlock extends FireBlock
         pLevel.players().get(0).sendSystemMessage(Component.literal("VALUES"));
         pLevel.players().get(0).sendSystemMessage(Component.literal(bEnts.values().toString()));
         pLevel.players().get(0).sendSystemMessage(Component.literal("END"));
+
+        //beacon check
         if (bEnts.values().toString().toLowerCase().contains("beacon"))
         {
             pLevel.players().get(0).sendSystemMessage(Component.literal("BEACON FOUND"));
+            super.onPlace(pState, pLevel, pPos, pOldState, pIsMoving);
+            return;
         }
 
-        super.onPlace(pState, pLevel, pPos, pBlockstate, pIsMoving);
+        //else (no beacon)
+        //all the code except for portal check manually added
+
+        pLevel.scheduleTick(pPos, this, getFireTickDelay(pLevel.random));
+        if (!pState.canSurvive(pLevel, pPos)) {
+            pLevel.removeBlock(pPos, false);
+        }
+    }
+
+    private static int getFireTickDelay(RandomSource pRandom) {
+        return 30 + pRandom.nextInt(10);
     }
 
 
