@@ -25,6 +25,7 @@ public class ModCreativeModeTabs
                         pOutput.accept(ModItems.CHEESE_SLICE.get());
                         pOutput.accept(ModItems.CLEANSING_VIAL.get());
                         pOutput.accept(ModBlocks.FIRE.get());
+                        pOutput.accept(ModBlocks.POWERED_BEACON.get());
                     })
                     .build());
 

@@ -1,6 +1,7 @@
 package net.crs.limits.block;
 
 import net.crs.limits.LimitsMod;
+import net.crs.limits.block.blockent.PoweredBeacon;
 import net.crs.limits.block.custom.ModFireBlock;
 import net.crs.limits.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -10,6 +11,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -50,6 +52,13 @@ public class ModBlocks
 
     public static final RegistryObject<Block> CHEESE_BLOCK = registerBlock("cheese_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.SLIME_BLOCK)));
+
+    public static final RegistryObject<Block> POWERED_BEACON = registerBlock("powered_beacon",
+            () -> new PoweredBeacon(
+                    BlockBehaviour.Properties.of().mapColor(MapColor.DIAMOND).instrument(NoteBlockInstrument.HAT).strength(3.0F).lightLevel((p_50828_) -> {
+                        return 15;
+                    }).noOcclusion())
+            );
 
     // note to self:
     // register fire to minecraft registry using "minecraft" instead of LimitsMod.MODID

@@ -30,4 +30,6 @@ public class ModFireBlock extends FireBlock
 
         super.onPlace(pState, pLevel, pPos, pBlockstate, pIsMoving);
     }
+
+
 }

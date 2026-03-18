@@ -67,6 +67,8 @@ public class LimitsMod
         //LOGGER.info("HELLO from server starting");
     }
 
+
+
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
@@ -74,6 +76,7 @@ public class LimitsMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            //RenderTypeLookup.setRenderLayer(yourBlock, RenderType.getTranslucent());
             // Some client setup code
             //LOGGER.info("HELLO FROM CLIENT SETUP");
             //LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
